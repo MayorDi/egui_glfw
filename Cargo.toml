@@ -14,7 +14,7 @@ include = ["**/*.rs", "Cargo.toml", "**/*.vert", "**/*.frag"]
 
 [dependencies]
 gl = "0.14.0"
-glfw = "0.55.0"
+glfw = { version = "0.55.0", features = "image" }
 egui = "0.27.1"
 
 [dependencies.clipboard]
