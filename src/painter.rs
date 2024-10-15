@@ -218,6 +218,7 @@ impl Painter {
 
     pub fn paint_and_update_textures(
         &mut self,
+        egui_ctx: &egui::Context,
         pixels_per_point: f32,
         clipped_primitives: &[egui::ClippedPrimitive],
         textures_delta: &egui::TexturesDelta,
@@ -226,7 +227,10 @@ impl Painter {
         for (id, image_delta) in &textures_delta.set {
             self.set_texture(*id, image_delta);
         }
-    
+
+        self.canvas_width = egui_ctx.screen_rect().max.x as _;
+        self.canvas_height = egui_ctx.screen_rect().max.y as _;
+
         // Paint primitives
         self.paint_primitives(pixels_per_point, clipped_primitives);
     
